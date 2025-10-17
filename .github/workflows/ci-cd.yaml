@@ -9,6 +9,9 @@ on:
       - 'apps/demo-app/**'
       - 'test.txt'
 
+permissions:
+  contents: write
+
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/gitops-demo
 
@@ -21,6 +24,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
+        token: ${{ secrets.SECRET_TOKEN }}
         fetch-depth: 0
     
     # 2. Docker Buildx 설정
@@ -64,13 +68,13 @@ jobs:
         git diff apps/demo-app/deployment.yaml
     
     # 7. 변경사항 커밋 및 Push
-    # - name: Commit and push changes
-    #   run: |
-    #     git config user.name "GitHub Actions Bot"
-    #     git config user.email "actions@github.com"
-    #     git add apps/demo-app/deployment.yaml
-    #     git commit -m "🚀 Update image to ${{ steps.image_tag.outputs.tag }}" || exit 0
-    #     git push
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "actions@github.com"
+        git add apps/demo-app/deployment.yaml
+        git commit -m "🚀 Update image to ${{ steps.image_tag.outputs.tag }}" || exit 0
+        git push
     
     # 8. 배포 완료 알림
     - name: Deployment summary
