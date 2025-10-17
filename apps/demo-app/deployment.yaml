@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: niceguy6112/gitops-demo:b1ea3b2
+        image: niceguy6112/gitops-demo:97adb52
         ports:
         - containerPort: 8080
         resources:
