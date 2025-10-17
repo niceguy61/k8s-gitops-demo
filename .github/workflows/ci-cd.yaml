@@ -6,6 +6,8 @@ on:
     paths:
       - 'src/**'
       - 'Dockerfile'
+      - 'apps/demo-app/**'
+      - 'test.txt'
 
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/gitops-demo
