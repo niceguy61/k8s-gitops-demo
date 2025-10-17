@@ -23,10 +23,7 @@ jobs:
     steps:
     # 1. 코드 체크아웃
     - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.SECRET_TOKEN }}
-        fetch-depth: 0
+      uses: actions/checkout@v4
     
     # 2. Docker Buildx 설정
     - name: Set up Docker Buildx
