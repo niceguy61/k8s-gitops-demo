@@ -10,8 +10,8 @@ on:
       - 'test.txt'
       - '.github/workflows/**'
 
-# permissions:
-#   contents: write
+permissions:
+  contents: write
 
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/gitops-demo
@@ -75,7 +75,7 @@ jobs:
         git config user.email "actions@github.com"
         git add apps/demo-app/deployment.yaml
         git commit -m "🚀 Update image to ${{ steps.image_tag.outputs.tag }}" || exit 0
-        git push
+        git push https://x-access-token:${{ secrets.SECRET_TOKEN }}@github.com/${{ github.repository }}.git
     
     # 8. 배포 완료 알림
     - name: Deployment summary
