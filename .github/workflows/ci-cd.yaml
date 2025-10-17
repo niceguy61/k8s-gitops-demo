@@ -8,9 +8,10 @@ on:
       - 'Dockerfile'
       - 'apps/demo-app/**'
       - 'test.txt'
+      - '.github/workflows/**'
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/gitops-demo
