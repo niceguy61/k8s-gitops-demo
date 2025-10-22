@@ -49,6 +49,7 @@ jobs:
         # SHA 태그 추출 (더 안전한 방법)
         IMAGE_TAG="ghcr.io/${{ github.repository }}/sample-app:main-${{ github.sha }}"
         echo "Updating image to: ${IMAGE_TAG}"
+        sed -i "s|image: ghcr.io/[^/]*/[^/]*/sample-app:.*|image: ${IMAGE_TAG}|g" lab_scripts/sample-app/k8s/app.yaml
         
         # 변경사항 커밋
         git config --local user.email "action@github.com"
