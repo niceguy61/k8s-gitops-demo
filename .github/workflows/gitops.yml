@@ -51,7 +51,7 @@ jobs:
         echo "Updating image to: ${IMAGE_TAG}"
         
         # app.yaml 업데이트
-        sed -i "s|image: ghcr.io/.*/sample-app:.*|image: ${IMAGE_TAG}|g" lab_scripts/sample-app/k8s/app.yaml
+        sed -i "s|image: ghcr.io/[^/]*/[^/]*/sample-app:.*|image: ${IMAGE_TAG}|g" lab_scripts/sample-app/k8s/app.yaml
         
         # 변경사항 확인
         grep "image:" lab_scripts/sample-app/k8s/app.yaml
