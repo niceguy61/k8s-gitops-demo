@@ -55,6 +55,6 @@ jobs:
         # 변경사항 커밋
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add k8s/deployment.yaml
+        git add lab_scripts/sample-app/k8s/app.yaml
         git commit -m "Update image to ${IMAGE_TAG}" || exit 0
         git push
