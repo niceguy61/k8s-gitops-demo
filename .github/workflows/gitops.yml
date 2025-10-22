@@ -41,5 +41,5 @@ jobs:
         context: lab_scripts/sample-app
         file: lab_scripts/sample-app/docker/Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: latest
         labels: ${{ steps.meta.outputs.labels }}
