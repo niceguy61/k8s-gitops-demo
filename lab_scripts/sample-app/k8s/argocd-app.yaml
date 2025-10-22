@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/실제사용자명/gitops-k8s-demo.git
+    repoURL: https://github.com/niceguy61/k8s-gitops-demo.git
     targetRevision: HEAD
     path: lab_scripts/sample-app/k8s
   destination:
