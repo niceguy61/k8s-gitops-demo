@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: ghcr.io/YOUR_USERNAME/gitops-k8s-demo/sample-app:latest
+        image: ghcr.io/실제사용자명/gitops-k8s-demo/sample-app:latest
         ports:
         - containerPort: 3000
         env:
@@ -56,22 +56,3 @@ spec:
     nodePort: 30080
   selector:
     app: sample-app
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: sample-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/YOUR_USERNAME/gitops-k8s-demo.git
-    targetRevision: HEAD
-    path: lab_scripts/sample-app/k8s
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
